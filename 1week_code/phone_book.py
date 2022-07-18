@@ -1,4 +1,3 @@
-
 def solution(phone_book):
     answer = True
     phone_book.sort(key=len)
