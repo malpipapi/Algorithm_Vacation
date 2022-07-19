@@ -1,28 +1,15 @@
+
+import heapq
 def solution(phone_book):
-    answer = True
-    phone_book.sort(key=len)
-    p_len=phone_book[0]
-    tmp=len(p_len)
-    i=1
-    while i<=len(phone_book)-1:
-        value=len(phone_book[i])-tmp+1
-        for k in range(i,len(phone_book)):
-            for j in range(0,value):
-                if p_len==phone_book[k][j:tmp]:
-                    answer=False
-                    break
-            if answer==False:
-                break
-        if answer==False:
-            break
-        p_len=phone_book[i]
-        tmp=len(p_len)
-        i+=1
-
-    
-    return answer
+    heapq.heapify(phone_book)  
+    p = heapq.heappop(phone_book)
+    while phone_book:
+        if p == phone_book[0][:len(p)]: 
+            return False  
+        p = heapq.heappop(phone_book)
+        print(p)
+    return True
 
 
-
-phone_book=["119", "97674223", "1195524421"]	
-print(solution(phone_book))
+pb1 = ["889", "12911", "8895524421"]
+print(solution(pb1))

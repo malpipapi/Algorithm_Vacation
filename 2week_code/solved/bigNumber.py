@@ -1,6 +1,6 @@
 from itertools import combinations
 def solution(number, k):
-    
+    tmp=""
     answer=[]
     n=len(number)-k
     for num in number:
@@ -11,20 +11,13 @@ def solution(number, k):
             while answer[-1]<num:
                 answer.pop()
                 k-=1
-            if len(answer)==n:
+                if not answer or k<=0:
                     break
-            if not answer or k<=0:
-                break
-        if len(answer)==n:
-                break
         answer.append(num)
-    tmp=""
+        if len(answer)==n:
+            break
     for i in range(len(answer)):
         tmp+=answer[i]
-
-            
-
-
     return tmp
 
 number="4321"
